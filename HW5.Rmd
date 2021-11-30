@@ -57,3 +57,14 @@ baltimore_summary <- baltimore_summary %>%
 
 
 ```
+
+
+# separate by cold or warm years
+```{r}
+baltimore_summary <- baltimore_summary %>%
+  mutate(cold_months = month %in% c(11, 12, 1:4)) %>%
+  mutate(warm_months = month %in% c(5:10))
+
+baltimore_summary
+
+```
