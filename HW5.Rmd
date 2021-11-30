@@ -22,4 +22,10 @@ library(lubridate)
 ```
 
 # Load the data
+```{r}
 
+homicides <- read.csv("data/homicide-data.csv")
+
+homicides <- homicides %>%
+  unite("city_name", city:state, sep = ", ")
+```
