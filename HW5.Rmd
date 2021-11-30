@@ -1,0 +1,25 @@
+---
+title: "HW5"
+author: "Pablo Maldonado"
+date: "12/1/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(broom)
+library(purrr)
+library(ggplot2)
+library(forcats)
+library(ggthemes)
+library(lubridate)
+```
+
+# Load the data
+
