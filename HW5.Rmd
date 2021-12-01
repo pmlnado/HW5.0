@@ -69,3 +69,17 @@ baltimore_summary <- baltimore_mutate_date %>%
   mutate(summer = month %in% c(5:10))
 
 ```
+
+# plotting 
+```{r, fig.width= 3.5, fig.height=.95}
+baltimore_summary_graph <- baltimore_summary %>%
+  ggplot(aes(x = date, y = n)) + 
+  geom_col(aes(fill = winter)) +
+  
+  theme_dark() +
+  ggtitle("Homicides in Baltimore, MD") +
+  labs(y = "Monthly homicides", x = "Date") +
+  theme(legend.position = "bottom")
+
+baltimore_summary_graph
+```
