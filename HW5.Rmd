@@ -2,7 +2,9 @@
 title: "HW5"
 author: "Pablo Maldonado"
 date: "12/1/2021"
-output: html_document
+output:
+  html_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -71,7 +73,7 @@ baltimore_summary <- baltimore_mutate_date %>%
 ```
 
 # plotting 
-```{r, fig.width= 3.5, fig.height=.95}
+```{r, fig.width= 9, fig.height= 3}
 baltimore_summary_graph <- baltimore_summary %>%
   ggplot(aes(x = date, y = n)) + 
   geom_col(aes(fill = winter)) +
