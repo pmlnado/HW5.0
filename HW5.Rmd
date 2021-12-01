@@ -19,6 +19,7 @@ library(ggplot2)
 library(forcats)
 library(ggthemes)
 library(lubridate)
+library(plotly)
 ```
 
 # Load the data
@@ -37,34 +38,7 @@ baltimore <- homicides %>%
   filter(city_name == "Baltimore, MD")
 
 
-baltimore
+baltimore %>%
+  filter(grepl("GREY", victim_last))
 ```
 
-# Group by month and year
-```{r}
-baltimore_summary <-baltimore %>%
-  mutate(reported_date = ymd(reported_date)) %>%
-  mutate(year = year(reported_date)) %>%
-  mutate(month = month(reported_date)) %>%
-  group_by(year, month) %>%
-  count()
-  
-
-
-baltimore_summary <- baltimore_summary %>%
-  mutate(date = paste(year, month, "15", sep = "-")) %>%
-  mutate(date = ymd(date))
-
-
-```
-
-
-# separate by cold or warm years
-```{r}
-baltimore_summary <- baltimore_summary %>%
-  mutate(cold_months = month %in% c(11, 12, 1:4)) %>%
-  mutate(warm_months = month %in% c(5:10))
-
-baltimore_summary
-
-```
