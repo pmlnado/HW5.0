@@ -42,3 +42,33 @@ baltimore %>%
   filter(grepl("GREY", victim_last))
 ```
 
+# Group by month and year
+```{r}
+#
+baltimore_mutate_date <- baltimore %>%
+  mutate(reported_date = ymd(reported_date)) %>%
+  mutate(year = year(reported_date)) %>%
+  mutate(month = month(reported_date)) %>%
+  mutate(day = day(reported_date)) %>%
+  group_by(year, month) %>%
+  count() 
+
+baltimore_mutate_date <- baltimore_mutate_date %>%
+  mutate(date = paste(year, month,"15", sep = "-")) %>%
+  mutate(date = ymd(date))
+
+
+baltimore_mutate_date
+```
+
+
+# separate by cold or warm years
+```{r}
+baltimore_summary <- baltimore_mutate_date %>%
+  mutate(winter = month %in% c(11, 12, 1:4)) %>%
+  mutate(summer = month %in% c(5:10))
+
+baltimore_summary %>% 
+  filter(grepl("2015-04", date))
+
+```
