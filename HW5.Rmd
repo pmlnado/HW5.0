@@ -75,7 +75,7 @@ baltimore_summary <- baltimore_mutate_date %>%
 baltimore_summary_graph <- baltimore_summary %>%
   ggplot(aes(x = date, y = n)) + 
   geom_col(aes(fill = winter)) +
-  
+  geom_vline(xintercept = ymd("2015-04-15"), color ="red", linetype = 2, size = 1.5) +
   theme_dark() +
   ggtitle("Homicides in Baltimore, MD") +
   labs(y = "Monthly homicides", x = "Date") +
