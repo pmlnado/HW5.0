@@ -68,7 +68,4 @@ baltimore_summary <- baltimore_mutate_date %>%
   mutate(winter = month %in% c(11, 12, 1:4)) %>%
   mutate(summer = month %in% c(5:10))
 
-baltimore_summary %>% 
-  filter(grepl("2015-04", date))
-
 ```
